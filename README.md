@@ -34,3 +34,6 @@ roslaunch object-detector-fusion lidar.launch
 ```
 You should see the output on the rviz main screen.
 ## Preview
+![detect many](https://user-images.githubusercontent.com/36593988/94802503-05e8d700-0412-11eb-90b0-d40df0c20ca5.gif)
+
+![detect one](https://user-images.githubusercontent.com/36593988/94802671-4a747280-0412-11eb-8ce4-dfe56d1e17fb.gif)
