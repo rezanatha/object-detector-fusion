@@ -116,7 +116,7 @@
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find realsense2_description)/urdf/test_d435_camera.urdf.xacro' use_nominal_extrinsics:=false"/>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sensor_reader)/rviz/urdf3.rviz" required="true"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find object-detector-fusion)/rviz/urdf3.rviz" required="true"/>
 
 
 <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
@@ -130,12 +130,12 @@
     </rosparam>
 
   </node>
-<node pkg="sensor_reader" type="lidar_tf2_broadcaster.py" name="lidar_broadcast" output="screen"/>
+<node pkg="object-detector-fusion" type="lidar_tf2_broadcaster.py" name="lidar_broadcast" output="screen"/>
 
 
   <node pkg="laser_filters" type="scan_to_scan_filter_chain"
       name="laser_filter">
-    <rosparam command="load" file="$(find sensor_reader)/src/my_laser_config.yaml" />
+    <rosparam command="load" file="$(find object-detector-fusion)/src/my_laser_config.yaml" />
     <remap from="scan" to="laserscan" />
   </node>
 
@@ -187,8 +187,8 @@
     <remap from="/raw_obstacles" to="/raw_obstacles/lidar_obstacles"/>
 </node>
 
-<node pkg="sensor_reader" type="pub_pf.py" name="pf_publish"/> 
-<node pkg="sensor_reader" type="multipf.py" name="particle_filter" output="screen"/>
-<node pkg="sensor_reader" type="pf_analysis.py" name="pf_analysis" output="screen"/>
+<node pkg="object-detector-fusion" type="pub_pf.py" name="pf_publish"/> 
+<node pkg="object-detector-fusion" type="multipf.py" name="particle_filter" output="screen"/>
+<!-- node pkg="object-detector-fusion" type="pf_analysis.py" name="pf_analysis" output="screen"/--> 
 
 </launch>
